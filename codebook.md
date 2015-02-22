@@ -1019,7 +1019,10 @@ str(data)
 ##Uses descriptive activity names to name the activities in the data set
 
 1. **Factorize variable `activity` in the data frame `data` using  descriptive activity names** 
+
+```r
 data$activity <- factor(data$activity, levels = activity.labels[,1], labels = activity.labels[,2])
+```
 
 2. **Check**
 
