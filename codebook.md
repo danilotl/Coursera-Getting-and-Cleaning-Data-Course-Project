@@ -642,7 +642,7 @@ train.activity <- read.table(file.path(root.folder, "train", "y_train.txt"), hea
 train.subject  <- read.table(file.path(root.folder, "train", "subject_train.txt"), header = FALSE)
 ```
 
-3. **Look at  the properties of the above varibles** 
+3. **Look at  the properties of the above variables** 
 
 
 ```r
@@ -923,22 +923,22 @@ data <- cbind(data.features, cbind(data.subject, data.activity))
 
 ##Extracts only the measurements on the mean and standard deviation for each measurement
 
-1. **Subset Name of Features by measurements on the mean and standard deviation** 
+1. **Subset features names by measurements on the mean and standard deviation** 
 
-i.e taken Names of Features with "mean()" or "std()"
+i.e taken features names with "mean()" or "std()"
 
 ```r
 sub.features.names <- features.names[,2][grep("mean\\(\\)|std\\(\\)", features.names[,2])]
 ```
 
-2. **Subset the data frame `Data` by seleted names of Features**
+2. **Subset the data frame `data` by selected names of features**
 
 ```r
 selected.names <- c(as.character(sub.features.names), "subject", "activity")
 data <- subset(data, select = selected.names)
 ```
 
-3. **Check the structures of the data frame `Data`**
+3. **Check the structures of the data frame `data`**
 
 ```r
 str(data)
