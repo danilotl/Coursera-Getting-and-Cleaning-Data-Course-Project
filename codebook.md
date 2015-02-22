@@ -1,6 +1,5 @@
 #Getting and Cleaning Data Course Project
 Author: Danilo Teixeira Lopes
------------------------------------------
 
 ---
 title: "Codebook"
