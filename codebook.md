@@ -1,11 +1,7 @@
 #Getting and Cleaning Data Course Project
 Author: Danilo Teixeira Lopes
+-----------------------------------------
 
----
-title: "Codebook"
-date: "February 22, 2015"
----
-========
 ##Variable and descriptions
 ###Subject
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years.
@@ -546,19 +542,19 @@ You should create one R script called run_analysis.R that does the following.
    of each variable for each activity and each subject.
 
 ##Get the data
-1.**Download the file and put the file  in the `data` folder**
+1. **Download the file and put the file  in the `data` folder**
 
 ```r
 if(!file.exists("./data")){dir.create("./data")}
 fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 download.file(fileUrl, destfile="./data/Dataset.zip", method="curl")
 ```
-2.**Unzip the file** 
+2. **Unzip the file** 
 
 ```r
 unzip(zipfile="./data/Dataset.zip",exdir="./data")
 ```
-3.**unzipped files are in the folder`UCI HAR Dataset`. Get the list of the files**
+3. **Unzipped files are in the folder`UCI HAR Dataset`. Get the list of the files**
 
 ```r
 path_rf <- file.path("./data" , "UCI HAR Dataset")
@@ -621,7 +617,7 @@ From the related files, we can see:
 
 So we will use  `Activity`, `Subject` and `Features` as part of descriptive variable names for data in data frame. 
 
-2.**Read data from the files into the variables**
+2. **Read data from the files into the variables**
 
 Read the names for features and labels for activities
 
@@ -903,7 +899,7 @@ str(train.features)
 
 ##Merges the training and the test sets to create one data set
 
-1.**Concatenate the data tables by rows** 
+1. **Concatenate the data tables by rows** 
 
 ```r
 data.features <- rbind(test.features, train.features)
@@ -911,7 +907,7 @@ data.activity <- rbind(test.activity, train.activity)
 data.subject  <- rbind(test.subject,  train.subject)
 ```
 
-2.**set names to variables**
+2. **Set names to variables**
 
 ```r
 names(data.features) <- features.names[,2]
@@ -919,7 +915,7 @@ names(data.activity) <- c("activity")
 names(data.subject)  <- c("subject")
 ```
 
-3.**Merge columns to get the data frame `data` for all data**
+3. **Merge columns to get the data frame `data` for all data**
 
 ```r
 data <- cbind(data.features, cbind(data.subject, data.activity))
@@ -1025,7 +1021,7 @@ str(data)
 1. **Factorize variable `activity` in the data frame `data` using  descriptive activity names** 
 data$activity <- factor(data$activity, levels = activity.labels[,1], labels = activity.labels[,2])
 
-2. **check**
+2. **Check**
 
 ```r
 head(data$activity, 50)
